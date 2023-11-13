@@ -13,5 +13,3 @@
   * Erstelle einen Eintrag, der auf das erzeugte Inventory zeigt.
   * Erstelle einen Eintrag, sodass ansible auf dem Zielsystem den User `sysadmin` nutzt.
 * Führe einen Ad-Hoc Befehl aus, um den Schulungs-Host anzupingen.
-
-#TODO Mehrere Nodes wären sinnvoll. bei einer ist die Aufgabe zu leicht

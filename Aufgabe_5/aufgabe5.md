@@ -1,5 +1,5 @@
 # Aufgabe 5
-Diese Übung baut auf den Ergebnissen der Aufgabe 1,2 und 3 auf.
+Diese Übung baut auf den Ergebnissen der Aufgabe 1,2, 3 und 4 auf.
 
 ## Aufgabendetails
 * Erstelle neben der Installationsanweisung für den apache2 Webserer einen Task für die Deinstallation in der gleichen Rolle.

@@ -6,7 +6,7 @@ Diese Übung baut auf den Ergebnissen der Aufgabe 1 auf.
 * Die Webserver sollen auf allen Hosts der `schulung` Gruppe laufen
 * Das apt Paket für den Apache Webserver heißt in Ubuntu `apache2` und in RHEL `httpd`.
 * (Nur Ubuntu)Installiere außerdem das `unzip` Paket auf den Ubuntu Hosts
-* Die Webseite wird als gezipptes Tar-Archiv (.tgz) unter  https://github.com/schwenne/website/archive/refs/tags/v0.0.1.zip bereitgestellt und soll im Rahmen des Playbooks von dort nach `/var/www/html`  heruntergeladen und entpackt werden.
+* Die Webseite wird als gezipptes Tar-Archiv (.tar.gz) unter https://github.com/schwenne/website/archive/refs/tags/v0.0.1.tar.gz bereitgestellt und soll im Rahmen des Playbooks von dort nach `/var/www/html`  heruntergeladen und entpackt werden.
 * Der Server soll auf dem Port 8080 horchen.
   * (Ubuntu) Dazu muss in `/etc/apache2/ports.conf` die Zeile `Listen 80` auf `Listen 8080` angepasst werden.
   * (RHEL) Dazu muss in `/etc/httpd/conf/httpd.conf` die Zeile `Listen 80` auf `Listen 8080` angepasst werden.
