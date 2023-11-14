@@ -8,7 +8,7 @@ Ansible step-by-step instructions:
 
 1. Connect to the Linux Server
     ```
-	ssh {{ user }}@oc-ansible-schulung-all.westeurope.cloudapp.azure.com
+	ssh student[01-15]@oc-ansible-schulung-all.centralus.cloudapp.azure.com
     ```
 2. Run Ubuntu in a Docker Env
     ```
