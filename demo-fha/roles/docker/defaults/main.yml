@@ -1,0 +1,3 @@
+---
+# defaults file for config
+docker_default_admin_user: sysadmin

@@ -1,0 +1,6 @@
+---
+# handlers file for config
+- name: Restart SSHD
+  ansible.builtin.service:
+    name: sshd
+    state: restarted

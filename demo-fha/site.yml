@@ -1,0 +1,8 @@
+---
+- name: Install docker on machines
+  hosts: docker_vms
+  become: true
+  tasks:
+    - name: Include docker role
+      ansible.builtin.include_role:
+        name: docker

@@ -1,0 +1,2 @@
+[docker_vms]
+oc-ansible-schulung-fha.centralus.cloudapp.azure.com ansible_user=sysadmin

@@ -1,0 +1,60 @@
+---
+# tasks file for config
+- name: Upgrade all apt packages
+  ansible.builtin.apt:
+    upgrade: full
+    update_cache: true
+    clean: true
+
+- name: Install some packages
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - curl
+
+- name: Download Docker install script
+  ansible.builtin.get_url:
+    url: https://get.docker.com
+    dest: /tmp/get-docker.sh
+    owner: "{{ docker_default_admin_user }}"
+    group: "{{ docker_default_admin_user }}"
+    mode: '0755'
+  # when:
+  #   - ansible_local.docker.docker.installed is not defined
+
+- name: Run the docker install shell script
+  ansible.builtin.command: /tmp/get-docker.sh
+  args:
+    chdir: /tmp/
+  register: shell_return
+  failed_when: shell_return.rc != 0
+  changed_when: shell_return.rc == 0
+  # when:
+  #   - ansible_local.docker.docker.installed is not defined
+
+- name: Allow SSH password authentication
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^PasswordAuthentication(.*)$'
+    line: 'PasswordAuthentication yes'
+  notify:
+    - Restart SSHD
+
+- name: Allow SSH password authentication
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config.d/50-cloud-init.conf
+    regexp: '^PasswordAuthentication(.*)$'
+    line: 'PasswordAuthentication yes'
+  notify:
+    - Restart SSHD
+
+- name: Add sysadmin to docker group
+  ansible.builtin.user:
+    name: "sysadmin"
+    groups: docker
+    append: yes
+
+# manually show / test
+# groups sysadmin
+# sudo adduser fha
