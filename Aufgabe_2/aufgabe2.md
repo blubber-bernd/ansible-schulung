@@ -14,5 +14,5 @@ Diese Übung baut auf den Ergebnissen der Aufgabe 1 auf.
 * (Nur RHEL) Damit die Webseite erreichebar ist schalte zunächst den Service `firewalld` aus.
 * Führe das Ansible-Playbook auf dem ansible-master aus.
 * Beim zweiten Ausführen des Playbooks auf einem bereits bespielten Server soll Ansible 0 Changes melden (d.h. das Playbook ist idempotent).
-* Die Webseite soll zum Schluss auf deinem Host-Rechner unter http://{{schulung_ip}}:8080/home.html erreichbar sein.
+* Die Webseite soll zum Schluss auf deinem Host-Rechner unter http://oc-ansible-schulung-[1-15].centralus.cloudapp.azure.com:8080/home.html erreichbar sein.
 * Nachdem der Hosts abgeschlossen wurde, ändert den Port auf 8081 und lasst das Playbook erneut laufen. Warum ist der Webserver nicht unter 8081 erreichbar?
