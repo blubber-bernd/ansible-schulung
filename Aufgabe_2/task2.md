@@ -14,5 +14,5 @@ This exercise builds on the results of exercise 1.
 * (RHEL only) To make the website accessible, first turn off the `firewalld` service.
 * Execute the Ansible playbook on the ansible-master.
 * The second time you run the playbook on a server that is already running, Ansible should report 0 changes (i.e. the playbook is idempotent).
-* Finally, the website should be accessible on your host computer at http://{{schulung_ip}}:8080/home.html.
+* Finally, the website should be accessible on your host computer at http://oc-ansible-schulung-[1-15].centralus.cloudapp.azure.com:8080/home.html.
 * After the host has been completed, change the port to 8081 and run the playbook again. Why is the web server not accessible at 8081?
