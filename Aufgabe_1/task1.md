@@ -8,7 +8,7 @@
   * Note: Under comparison with https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html#list-of-behavioral-inventory-parameters
 
 * Do not use ssh to access localhost, set the host variable `ansible_connection=local` there instead
-* Training1 should first authenticate itself with an ssh key, set the host variables there to `~/.ssh/schulung_rsa`.
+* schulung should first authenticate itself with an ssh key, set the host variables there to `~/.ssh/schulung_rsa`.
 * Create an ansible config under the Ansible root directory `./ansible.cfg` which initially has no active entries.
   * Create an entry that points to the created inventory.
   * Create an entry so that ansible uses the user `sysadmin` on the target system.
