@@ -3,7 +3,7 @@ This exercise builds on the results of exercise 1.
 
 ## Task details
 * Create a playbook `web.yml` in the `ansible` directory of the Git repo.
-* The web servers should run on all hosts of the `training` group
+* The web servers should run on all hosts of the `schulung` group
 * The apt package for the Apache web server is called `apache2` in Ubuntu and `httpd` in RHEL.
 * (Ubuntu only)Also install the `unzip` package on the Ubuntu hosts
 * The website is provided as a zipped tar archive (.tar.gz) at https://github.com/schwenne/website/archive/refs/tags/v0.0.1.tar.gz and should be downloaded and unzipped from there to `/var/www/html` as part of the playbook.
