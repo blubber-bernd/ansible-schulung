@@ -11,4 +11,18 @@ We want to improve the playbook by adding many best practices. We also want to i
 * Use this handler in the role so that it is called when the webserver configuration changes.
 * Change the webport to `8081` again and check if the handler works http://oc-ansible-schulung-[1-15].centralus.cloudapp.azure.com:8081
 
+(optional)
+* Add the `templates` folder to the `webserver` role.
+* add an `page.j2` file into the templates folder and copy the code from the tip below into it
+* Add a task to the role, that uses the template and copies it to `/var/www/html/page.html`
+* verify your result: http://oc-ansible-schulung-[1-15].centralus.cloudapp.azure.com:8081/page.html
+
 ## Tips
+ use the following jinja file (fileextension is: *.j2)
+```
+<html>
+    <body>
+        <h1>This server ist listening on Port:{{ webserver_port }}</h1>
+    </body>
+</html>
+```
