@@ -1,0 +1,7 @@
+---
+- name: Install unzip and curl
+  ansible.builtin.apt:
+    name:
+      - unzip
+      - curl
+    state: present

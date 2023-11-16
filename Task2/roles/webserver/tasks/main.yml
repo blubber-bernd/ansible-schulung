@@ -1,0 +1,54 @@
+---
+- name: Install Tasks
+  tags:
+    - install
+  block:
+    - name: Install apache2 package
+      ansible.builtin.apt:
+        name:
+          - apache2
+        state: present
+
+    - name: Download Website
+      ansible.builtin.get_url:
+        url: "{{ webserver_url }}"
+        dest: "/tmp/"
+        mode: u=rwx,g=rx,o=rx
+        owner: sysadmin
+        group: sysadmin
+
+    - name: Unzip Download
+      ansible.builtin.unarchive:
+        src: "/tmp/website-0.0.1.tar.gz"
+        dest: "/var/www/html/"
+        mode: u=rwx,g=rx,o=rx
+        owner: sysadmin
+        group: sysadmin
+        remote_src: true
+        extra_opts: [--strip-components=1]
+      notify: "Reload WebserverConfig"
+
+    # - name: Change Webserver Port
+    #  ansible.builtin.lineinfile:
+    #    path: /etc/apache2/ports.conf
+    #    regexp: '^Listen 80(.*)$'
+    #    line: Listen 8080
+    #  register: port_return
+
+    - name: Change Webserver Port
+      ansible.builtin.template:
+        src: ports.conf.j2
+        dest: /etc/apache2/ports.conf
+        owner: root
+        group: root
+        mode: '0644'
+      notify: "Reload WebserverConfig"
+
+- name: Remove apache2 package
+  ansible.builtin.apt:
+    name:
+      - apache2
+    state: absent
+  tags:
+    - never
+    - uninstall

@@ -1,0 +1,14 @@
+---
+- name: Setup Webserver
+  hosts: schulung
+  become: true
+  tasks:
+    - name: Update Dependencies
+      ansible.builtin.import_role:
+        name: update
+    - name: Include os_base
+      ansible.builtin.import_role:
+        name: os_base
+    - name: Include Webserver
+      ansible.builtin.import_role:
+        name: webserver

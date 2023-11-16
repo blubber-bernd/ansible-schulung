@@ -1,0 +1,5 @@
+---
+- name: Reload WebserverConfig
+  ansible.builtin.service:
+    name: apache2
+    state: reloaded
