@@ -1,0 +1,5 @@
+---
+# task2.yml
+- name: Importing tasks using include directive
+  ansible.builtin.debug:
+    msg: "Importing the task from task2.yml using import directive"

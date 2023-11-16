@@ -1,0 +1,22 @@
+---
+# main.yml
+- name: Import playbook1
+  import_playbook: playbook1.yml
+  when: run is defined
+
+- name: Import playbook2
+  import_playbook: playbook2.yml
+  when: run is defined
+
+- name: Use a block
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Import and include with block directive
+      block:
+        - name: Include task1
+          ansible.builtin.include_tasks: task1.yml
+        - name: Import task2
+          ansible.builtin.import_tasks: task2.yml

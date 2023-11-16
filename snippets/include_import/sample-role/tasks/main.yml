@@ -1,0 +1,5 @@
+---
+# tasks file for sample-role
+- name: DEBUG - sample-role
+  ansible.builtin.debug:
+    msg: "Debug output of role 'sample-role' - ITEM: {{ item.value }}"

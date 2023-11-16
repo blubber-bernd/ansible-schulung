@@ -1,0 +1,12 @@
+# playbook2.yml
+- name: Playbook imports
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    run: true
+
+  tasks:
+    - name: Task Import 2
+      ansible.builtin.debug:
+        msg: "Importing playbook2.yml"

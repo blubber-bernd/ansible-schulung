@@ -1,0 +1,40 @@
+---
+- name: Dynamic include
+  hosts: localhost
+  gather_facts: false
+  vars:
+    test_variable: 123
+    test_list:
+      - "String 1"
+      - "String 2"
+      - "String 3"
+    test_dict:
+      - key: test1
+        value: test1-value
+      - key: test2
+        value: test2-value
+      - key: test3
+        value: test3-value
+
+  tasks:
+    - name: Include role
+      ansible.builtin.include_role:
+        name: sample-role
+      with_items: "{{ test_dict }}"
+  tags:
+    - include
+
+- name: Static import
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Import role
+      ansible.builtin.import_role:
+        name: sample-role
+      # Here comes the error:
+      with_items:
+        - 1
+        - 2
+        - 3
+

@@ -1,0 +1,14 @@
+---
+- name: Module defaults sample
+  hosts: localhost
+  gather_facts: false
+  module_defaults:
+    ansible.builtin.debug:
+      verbosity: 1
+  tasks:
+    - name: DEBUG Task
+      ansible.builtin.debug:
+        msg: "Das ist ein Test"
+    - name: DEBUG Task
+      ansible.builtin.debug:
+        msg: "Das ist ein Test2"
