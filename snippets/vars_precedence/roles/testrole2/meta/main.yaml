@@ -1,0 +1,17 @@
+---
+
+galaxy_info:
+  author: Fabian Hardt
+  description: Testing role 2
+  license: MIT
+  min_ansible_version: 2.4
+  platforms:
+    - name: EL
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
+  categories:
+    - system
+dependencies: []

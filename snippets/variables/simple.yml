@@ -1,0 +1,59 @@
+---
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  vars:
+    new_var: "test"
+    fabian:
+      last_name: Hardt
+      first_name: Fabian
+      age: 32
+      salary: 5555.99
+      job: "Solution Architect"
+      details: |
+        Fabian works as a Solution Architect
+        OPITZ CONSULTING his one IT-Consulting company in germany
+      active: false
+      test: "Hallo123"
+
+  tasks:
+    # - name: Show what type of variable fabian is
+    #   ansible.builtin.debug:
+    #     msg: "{{ fabian | type_debug }}"
+
+    # - name: Show values of fabian
+    #   ansible.builtin.debug:
+    #     msg: "{{ fabian }}"
+
+    # - name: Show job of fabian
+    #   ansible.builtin.debug:
+    #     msg: "{{ fabian.job }}"
+
+    # - name: Convert salary to integer and add some
+    #   ansible.builtin.debug:
+    #     msg: "{{ fabian.salary | int + 4444 }}"
+
+    # - name: Get fabian test?
+    #   ansible.builtin.debug:
+    #     # msg: "{{ fabian.test }}"
+    #     msg: "{{ fabian.test | default('UNDEFINED') }}"
+
+    # - name: Get details as INT?
+    #   ansible.builtin.debug:
+    #     msg: "{{ fabian.details | int + 4444 }}"
+
+    # - name: Get new var
+    #   ansible.builtin.debug:
+    #     msg: "{{ new_var }}"
+
+    # - name: Set new fact
+    #   ansible.builtin.set_fact:
+    #     new_var: "{{ fabian.details }}{{ fabian.first_name  }}"
+
+    # - name: Get new var
+    #   ansible.builtin.debug:
+    #     msg: "{{ new_var }}"
+
+    - name: Boolean
+      ansible.builtin.debug:
+        msg: "{{ fabian.active | ternary('Boolean = true', new_var) }}"

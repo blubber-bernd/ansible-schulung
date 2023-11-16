@@ -1,0 +1,77 @@
+---
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  vars:
+    bands:
+      - name: The Beatles
+        members:
+          - Lennon
+          - McCartney
+          - Harrison
+          - Starr
+        formed: 1960
+        decade: 60s
+
+      - name: The Eagles
+        members:
+          - Frey
+          - Henley
+          - Leadon
+          - Meisner
+        formed: 1971
+        decade: 70s
+
+      - name: Red Hot Chili Peppers
+        members:
+          - Kiedis
+          - Smith
+          - Frusciante
+          - Balzary
+        formed: 1982
+        decade: 90s
+
+      - name: "Black Eyed Peas"
+        members:
+          - Adams
+          - Lindo
+          - Gomez
+        formed: 1995
+        decade: 00s
+
+      - name: "Dummy"
+        formed: 2022
+        decade: 80s
+  tasks:
+    - name: Show what type of variable bands is
+      ansible.builtin.debug:
+        msg: "{{ bands | type_debug }}"
+
+    - name: Show what type of data the bands variable is made up of
+      ansible.builtin.debug:
+        msg: "{{ item | type_debug }}"
+      loop: "{{ bands }}"
+
+    - name: List ALL band members of ALL bands
+      ansible.builtin.debug:
+        msg: "{{ bands | selectattr('members', 'defined') | map(attribute='members') }}"
+
+    - name: List the years the bands were formed
+      ansible.builtin.debug:
+        msg: "{{ bands | selectattr('formed', 'defined') | map(attribute='formed') }}"
+
+    - name: List members of band formed in 1971
+      ansible.builtin.debug:
+        msg: "{{ bands | selectattr('formed', 'match', '1971') | map(attribute='members') }}"
+
+    - name: List band formed with a member named Starr
+      ansible.builtin.debug:
+        msg: "{{ bands | selectattr('members', 'defined') | selectattr('members', 'search', 'Starr') | map(attribute='name') }}"
+
+    - name: Loop through the the 80s and 90s bands and display a message if Run DMC is in the name
+      ansible.builtin.debug:
+        msg:
+          - !unsafe Hey, oh...Listen what I say, oh...
+          - "Name of the band: {{ item }}"
+      loop: "{{ bands | selectattr('decade', 'search', '^[8-9]0s$') | map(attribute='name') }}"
+      when: "'red' in item | lower"
